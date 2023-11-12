@@ -1,0 +1,43 @@
+hr {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 8px;
+}
+
+.error {
+  color: red;
+  margin-top: 0;
+}
+
+.input-error {
+  border: 2px solid red;
+}
+
+button {
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit] {
+  background-color: rgb(62, 62, 255);
+}
+
+button[type=reset] {
+  background-color: rgb(229, 22, 22);
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+}/*# sourceMappingURL=weeklykitten.css.map */
