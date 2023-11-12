@@ -19,6 +19,7 @@ input[type=text], input[type=password] {
 
 .input-error {
   border: 2px solid red;
+  outline: none;
 }
 
 button {

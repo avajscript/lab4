@@ -64,9 +64,18 @@ const validate = () => {
         
         password2.parentElement.appendChild(errorMsg);
     }
-    // create popup if terms and conditions not selected
+    // create error if terms and conditions not selected
     if(!terms.checked) {
-        alert("Please check the terms and conditions");
+        if(terms.nextElementSibling.nextElementSibling?.className == 'error') {
+            terms.parentElement.removeChild(terms.parentElement.lastChild);
+        }
+        // create error
+        const errorMsg = document.createElement('p');
+        errorMsg.classList.add('error');
+        errorMsg.style.marginLeft = '8px';
+        errorMsg.innerHTML = '<b>x</b> Please accept the terms and conditions';
+        // add error beside terms and conditions
+        terms.parentElement.appendChild(errorMsg);
         formState = false;
     }
     return formState;
