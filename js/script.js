@@ -1,3 +1,4 @@
+// get field elements
 const email = document.getElementById("email");
 const username = document.getElementById("login");
 const password = document.getElementById("pass");
@@ -5,23 +6,25 @@ const password2 = document.getElementById("pass2");
 const newsletter = document.getElementById('newletter');
 const terms = document.getElementById('terms');
 
-
+// object to be iterated over for field validation
 const fields = {
     email: {name: "email", reg: /^[\S]+@[a-zA-Z]+\.[a-zA-Z]+$/, element: email, message: "Email address should be non-empty with the format xyz@xyz.xyz.", state: true},
     name: {name: "username", reg: /^.{1,30}$/, element: username , message: "User name should be non-empty, and within 30 characters long.", state: true},
     password: {name: "password", reg: /.{8,}/, element: password, message: "Password should be at least 8 characters", state: true},
     
 };
-const validate = () => {
 
-    
+// validates every form field and outputs errors to the DOM if needed
+// returns true if valid and false if not
+const validate = () => {
+    // formState is returned and changed if any fields are false
     let formState = true;
-    let fieldState = true;
     
+    // iterate over each field, checking for input errors
     Object.entries(fields).forEach(([key, f]) => {
-        
+        // check if field matches the regex
         if(f.reg.test(f.element.value)) {
-            console.log("///")
+          
             // remove error element if exists
             if(f.element.nextElementSibling?.className == 'error') {
                 f.element.parentElement.removeChild(f.element.parentElement.lastChild);
@@ -29,6 +32,7 @@ const validate = () => {
             // remove error class from input if exists
             f.element.classList.remove('input-error');
         } else {
+            // field is false
             formState = false;
             // create error element
             const errorMsg = document.createElement('p');
@@ -60,7 +64,11 @@ const validate = () => {
         
         password2.parentElement.appendChild(errorMsg);
     }
-    
+    // create popup if terms and conditions not selected
+    if(!terms.checked) {
+        alert("Please check the terms and conditions");
+        formState = false;
+    }
     return formState;
 }
 
